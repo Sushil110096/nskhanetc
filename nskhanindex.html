@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NS KHAN Electric Store</title>
+    <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    background: #fff;
+    line-height: 1.6;
+}
+
+/* Navbar */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #07111f;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #ffc400;
+}
+
+.logo small {
+    display: block;
+    font-size: 11px;
+    color: #aaa;
+    margin-left: 30px;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffc400;
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    color: white;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Hero */
+
+.hero {
+    min-height: 620px;
+    background:
+        linear-gradient(135deg, #07111f 0%, #102b48 55%, #07111f 100%);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 70px max(7%, 25px);
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.tagline {
+    color: #ffc400;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 7vw, 78px);
+    line-height: 1.05;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: #ffc400;
+    display: block;
+}
+
+.hero p:not(.tagline) {
+    color: #d4dce5;
+    font-size: 19px;
+    max-width: 570px;
+}
+
+.hero-buttons {
+    margin-top: 35px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.primary {
+    background: #ffc400;
+    color: #111;
+}
+
+.primary:hover {
+    background: #ffda45;
+    transform: translateY(-2px);
+}
+
+.secondary {
+    border: 2px solid #ffc400;
+    color: #ffc400;
+}
+
+.secondary:hover {
+    background: #ffc400;
+    color: #111;
+}
+
+.hero-icon {
+    width: 330px;
+    height: 330px;
+    border-radius: 50%;
+    background: #ffc400;
+    color: #07111f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 150px;
+    box-shadow: 0 0 80px rgba(255,196,0,0.35);
+}
+
+/* Common */
+
+section {
+    padding: 85px 7%;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 40px;
+    color: #07111f;
+    margin-bottom: 10px;
+}
+
+.section-text {
+    text-align: center;
+    color: #777;
+    margin-bottom: 45px;
+}
+
+/* Categories */
+
+.categories {
+    background: #f7f9fb;
+}
+
+.category-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.category-card {
+    background: white;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+    transition: 0.3s;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.category-card div {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.category-card h3 {
+    margin-bottom: 8px;
+}
+
+.category-card p {
+    color: #777;
+}
+
+/* Products */
+
+.products {
+    background: white;
+}
+
+.product-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    padding-bottom: 20px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.product-image {
+    height: 190px;
+    background: #f2f5f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 85px;
+}
+
+.product-card h3 {
+    margin-top: 20px;
+    font-size: 21px;
+}
+
+.product-card p {
+    color: #777;
+    padding: 5px 15px;
+}
+
+.price {
+    color: #e5a900;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.product-card button,
+.contact-form button {
+    border: none;
+    background: #07111f;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.product-card button:hover,
+.contact-form button:hover {
+    background: #ffc400;
+    color: #111;
+}
+
+/* About */
+
+.about {
+    background: #f7f9fb;
+    display: flex;
+    align-items: center;
+    gap: 70px;
+}
+
+.about-image {
+    min-width: 400px;
+    height: 400px;
+    background: #07111f;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 160px;
+    color: #ffc400;
+}
+
+.about-content {
+    max-width: 600px;
+}
+
+.about-content h2 {
+    text-align: left;
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 25px;
+    font-weight: bold;
+    color: #07111f;
+}
+
+/* Contact */
+
+.contact {
+    background: white;
+}
+
+.contact-container {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-box {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    padding: 18px;
+    background: #f7f9fb;
+    border-radius: 10px;
+}
+
+.contact-box span {
+    width: 50px;
+    height: 50px;
+    background: #ffc400;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.contact-box p {
+    color: #777;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #ffc400;
+}
+
+.contact-form button {
+    padding: 15px;
+    font-size: 16px;
+}
+
+/* WhatsApp */
+
+.whatsapp {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    text-decoration: none;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+    z-index: 999;
+}
+
+/* Footer */
+
+footer {
+    background: #07111f;
+    color: white;
+    text-align: center;
+    padding: 45px 20px;
+}
+
+.footer-logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #ffc400;
+}
+
+footer p {
+    color: #aaa;
+    margin: 8px 0;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 20px 0;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #ffc400;
+}
+
+.copyright {
+    border-top: 1px solid #263242;
+    padding-top: 20px;
+    margin-top: 25px !important;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-icon {
+        width: 240px;
+        height: 240px;
+        font-size: 110px;
+    }
+
+    .about {
+        gap: 40px;
+    }
+
+    .about-image {
+        min-width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .navbar {
+        position: relative;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: #07111f;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 50px;
+        padding-top: 60px;
+        padding-bottom: 70px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-icon {
+        width: 200px;
+        height: 200px;
+        font-size: 90px;
+    }
+
+    .category-grid,
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about {
+        flex-direction: column;
+    }
+
+    .about-image {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .about-content h2 {
+        text-align: center;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 65px 5%;
+    }
+
+    section h2 {
+        font-size: 32px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span>⚡</span> NS KHAN <small>Electric Store</small>
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="tagline">WELCOME TO</p>
+            <h1>NS KHAN <span>Electric Store</span></h1>
+            <p>
+                Quality Electrical Products at the Best Prices.
+                Your trusted partner for all electrical needs.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#products" class="btn primary">View Products</a>
+                <a href="#contact" class="btn secondary">Contact Us</a>
+            </div>
+        </div>
+
+        <div class="hero-icon">
+            ⚡
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <h2>Our Categories</h2>
+        <p class="section-text">Everything you need for your electrical requirements</p>
+
+        <div class="category-grid">
+            <div class="category-card">
+                <div>💡</div>
+                <h3>LED Lights</h3>
+                <p>Modern & energy efficient lighting</p>
+            </div>
+
+            <div class="category-card">
+                <div>🔌</div>
+                <h3>Switches</h3>
+                <p>Premium quality switches & sockets</p>
+            </div>
+
+            <div class="category-card">
+                <div>〰️</div>
+                <h3>Wires & Cables</h3>
+                <p>Reliable wires for every requirement</p>
+            </div>
+
+            <div class="category-card">
+                <div>🌀</div>
+                <h3>Fans</h3>
+                <p>Powerful & stylish ceiling fans</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products" id="products">
+        <h2>Popular Products</h2>
+        <p class="section-text">Explore some of our electrical products</p>
+
+        <div class="product-grid">
+
+            <div class="product-card">
+                <div class="product-image">💡</div>
+                <h3>LED Bulb</h3>
+                <p>Energy Saving LED Bulb</p>
+                <div class="price">₹120</div>
+                <button onclick="orderProduct('LED Bulb')">Enquire Now</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🔌</div>
+                <h3>Switch & Socket</h3>
+                <p>Premium Modular Switch</p>
+                <div class="price">₹180</div>
+                <button onclick="orderProduct('Switch & Socket')">Enquire Now</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">〰️</div>
+                <h3>Electrical Wire</h3>
+                <p>High Quality Copper Wire</p>
+                <div class="price">₹950</div>
+                <button onclick="orderProduct('Electrical Wire')">Enquire Now</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🌀</div>
+                <h3>Ceiling Fan</h3>
+                <p>High Speed Ceiling Fan</p>
+                <div class="price">₹1,999</div>
+                <button onclick="orderProduct('Ceiling Fan')">Enquire Now</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">⚙️</div>
+                <h3>MCB</h3>
+                <p>Safety MCB for Home & Shop</p>
+                <div class="price">₹250</div>
+                <button onclick="orderProduct('MCB')">Enquire Now</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🔦</div>
+                <h3>Emergency Light</h3>
+                <p>Rechargeable Emergency Light</p>
+                <div class="price">₹650</div>
+                <button onclick="orderProduct('Emergency Light')">Enquire Now</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="about-image">
+            ⚡
+        </div>
+
+        <div class="about-content">
+            <p class="tagline">ABOUT OUR STORE</p>
+            <h2>Trusted Electrical Store</h2>
+
+            <p>
+                <strong>NS KHAN Electric Store</strong> is your one-stop
+                destination for quality electrical products.
+            </p>
+
+            <p>
+                We provide electrical items for homes, shops, offices
+                and other projects at competitive prices.
+            </p>
+
+            <div class="features">
+                <div>✓ Quality Products</div>
+                <div>✓ Best Prices</div>
+                <div>✓ Friendly Service</div>
+                <div>✓ Genuine Products</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p class="section-text">Get in touch with NS KHAN Electric Store</p>
+
+        <div class="contact-container">
+
+            <div class="contact-info">
+                <div class="contact-box">
+                    <span>📞</span>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>+91 8298638924</p>
+                    </div>
+                </div>
+
+                <div class="contact-box">
+                    <span>💬</span>
+                    <div>
+                        <h3>WhatsApp</h3>
+                        <p>Message us for product enquiry</p>
+                    </div>
+                </div>
+
+                <div class="contact-box">
+                    <span>📍</span>
+                    <div>
+                        <h3>Address</h3>
+                        <p>MASJID KE PASS MADARIPUR KARAN MINAPUR MUZAFFARPUR BIHAR 843117</p>
+                    </div>
+                </div>
+
+                <div class="contact-box">
+                    <span>🕐</span>
+                    <div>
+                        <h3>Opening Hours</h3>
+                        <p>Mon - Sun: 9:00 AM - 9:00 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form" onsubmit="sendMessage(event)">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="tel" id="phone" placeholder="Phone Number" required>
+                <input type="text" id="subject" placeholder="Product Name">
+                <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+
+                <button type="submit">Send Enquiry</button>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- WhatsApp Button -->
+    <a class="whatsapp" href="https://wa.me/918298638924" target="_blank">
+        💬
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">⚡ NS KHAN Electric & Book Store</div>
+        <p>SUSHIL KUMAR</p>
+
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <p class="copyright">
+            © 2026 NS KHAN Electric & Book Store. All Rights Reserved.
+        </p>
+    </footer>
+
+<script>
+    // Mobile Menu
+function toggleMenu() {
+    const navLinks = document.getElementById("navLinks");
+    navLinks.classList.toggle("active");
+}
+
+
+// Product Enquiry
+function orderProduct(productName) {
+
+    const phoneNumber = "918298638924";
+
+    const message =
+        `Hello NS KHAN Electric Store,%0A%0A` +
+        `I am interested in: ${productName}%0A%0A` +
+        `Please share more details and price.`;
+
+    window.open(
+        `https://wa.me/${phoneNumber}?text=${message}`,
+        "_blank"
+    );
+}
+
+
+// Contact Form
+function sendMessage(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const subject = document.getElementById("subject").value;
+    const message = document.getElementById("message").value;
+
+    const shopNumber = "918298638924";
+
+    const whatsappMessage =
+        `Hello NS KHAN Electric Store,%0A%0A` +
+        `Name: ${name}%0A` +
+        `Phone: ${phone}%0A` +
+        `Product: ${subject}%0A` +
+        `Message: ${message}`;
+
+    window.open(
+        `https://wa.me/${shopNumber}?text=${whatsappMessage}`,
+        "_blank"
+    );
+}
+
+
+// Close mobile menu after clicking a link
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+        document.getElementById("navLinks").classList.remove("active");
+    });
+
+});
+</script>
+</body>
+</html>
